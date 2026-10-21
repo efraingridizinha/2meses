@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cordel da Mourinha</title>
+    
+    <!-- Fontes do Google para simular Cordel e Xilogravura -->
+    <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Special+Elite&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --papel: #f4e8d1; /* Cor de papel envelhecido */
+            --tinta: #1a1a1a; /* Preto rústico para o texto */
+            --fundo: #dcc8a9; /* Fundo geral da tela */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--fundo);
+            background-image: radial-gradient(var(--papel) 10%, transparent 10%), radial-gradient(var(--papel) 10%, transparent 10%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            font-family: 'Special Elite', monospace; /* Fonte de máquina de escrever */
+            color: var(--tinta);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* O Varal do Cordel */
+        .varal-container {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .corda {
+            position: absolute;
+            top: 40px;
+            width: 120%;
+            height: 4px;
+            background: #8b5a2b;
+            border-bottom: 2px solid #5c3a21;
+            border-radius: 50%;
+            transform: translateY(-20px);
+            z-index: 1;
+        }
+
+        .pregador {
+            position: absolute;
+            top: 20px;
+            width: 15px;
+            height: 40px;
+            background-color: #d4a373;
+            border: 2px solid #8b5a2b;
+            border-radius: 3px;
+            z-index: 10;
+        }
+
+        /* O Livreto de Cordel */
+        .livreto {
+            background-color: var(--papel);
+            width: 90%;
+            max-width: 500px;
+            margin-top: -30px; /* Sobe para prender no varal */
+            margin-bottom: 50px;
+            padding: 30px;
+            box-sizing: border-box;
+            border: 4px solid var(--tinta);
+            box-shadow: 
+                inset 0 0 50px rgba(0,0,0,0.1), /* Sombra interna para dar textura */
+                10px 10px 0px rgba(0,0,0,0.2); /* Sombra dura estilo xilogravura */
+            z-index: 5;
+            position: relative;
+            
+            /* Bordas duplas decorativas */
+            outline: 2px solid var(--tinta);
+            outline-offset: -10px;
+        }
+
+        /* Capa */
+        .capa {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 2px dashed var(--tinta);
+            margin-bottom: 40px;
+        }
+
+        .titulo {
+            font-family: 'Erica One', cursive; /* Fonte estilo Xilogravura */
+            font-size: 2.2rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            margin: 20px 0;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        .foto-container {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 250px;
+            border: 6px solid var(--tinta);
+            padding: 5px;
+            background: #fff;
+            transform: rotate(-2deg);
+        }
+
+        .foto-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* Filtro para deixar a foto com cara de impressão antiga/xilogravura */
+            filter: grayscale(100%) contrast(150%) brightness(90%);
+        }
+
+        /* Miolo (O Poema) */
+        .poema {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .estrofe {
+            margin-bottom: 30px;
+            padding-left: 15px;
+            border-left: 2px solid rgba(26, 26, 26, 0.2);
+            
+            /* Para o efeito de animação no scroll */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .estrofe.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ingles {
+            font-style: italic;
+            text-align: center;
+            border: none;
+            padding: 0;
+            font-weight: bold;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .titulo { font-size: 1.8rem; }
+            .poema { font-size: 1.1rem; }
+            .livreto { padding: 20px; outline-offset: -6px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="varal-container">
+        <div class="corda"></div>
+        <div class="pregador"></div>
+    </div>
+
+    <div class="livreto">
+        <div class="capa">
+            <h1 class="titulo">2 meses da nova primavera da mourinha</h1>
+            
+            <div class="foto-container">
+                <!-- Para colocar a foto de vocês, troque o link abaixo pelo link da imagem -->
+                <img src="https://via.placeholder.com/300x400/1a1a1a/f4e8d1?text=Coloque+A+Sua+Foto+Aqui" alt="Foto da Mourinha">
+            </div>
+        </div>
+
+        <div class="poema">
+            <div class="estrofe">
+                E não podia deixar<br>
+                Batido assim passar,<br>
+                Dois meses para o dia<br>
+                Da minha mulher brilhar,<br>
+                Na luz do seu aniversário<br>
+                Pro nosso amor festejar!
+            </div>
+
+            <div class="estrofe">
+                Dia da mulher da vida,<br>
+                Sou dela dependente,<br>
+                Só de sentir o seu cheiro<br>
+                Que cruza o continente,<br>
+                Cê já sabe o que acontece:<br>
+                Fico doido de repente!
+            </div>
+
+            <div class="estrofe">
+                A mulher tem a palavra<br>
+                Com o dom de me curar,<br>
+                Nos meus dias mais difíceis<br>
+                Ela vem me levantar.<br>
+                Se a escrita é gigante,<br>
+                Imagine ela a falar!
+            </div>
+
+            <div class="estrofe">
+                Quando fala no ouvidinho,<br>
+                Eu só sei é relaxar,<br>
+                Paro logo tudo que faço<br>
+                Para poder escutar,<br>
+                E me acabo na doçura<br>
+                Do que tens a me falar.
+            </div>
+
+            <div class="estrofe">
+                Quando eu penso no abraço,<br>
+                Eu não sei o que dizer...<br>
+                O calor dos braços dela<br>
+                Faz minha paz florescer,<br>
+                É uma paz tão arretada<br>
+                Que eu não sei te detalhar.
+            </div>
+
+            <div class="estrofe">
+                E se penso no seu beijo,<br>
+                Perco logo a explicação...<br>
+                Sou viciado na boca<br>
+                Que roubou meu coração,<br>
+                Beijar essa boca linda<br>
+                É a minha vocação.
+            </div>
+
+            <div class="estrofe">
+                Quando lembro do carinho...<br>
+                Ah, que bem faz ao peito!<br>
+                Cê não sabe nem o quanto<br>
+                O seu toque é perfeito.<br>
+                Me embala com doçura<br>
+                E me leva ao paraíso do seu amor.
+            </div>
+
+            <div class="estrofe">
+                Quando penso na sua língua,<br>
+                Fico todo maluquinho!<br>
+                Passando de ponta a ponta<br>
+                Em todo o meu corpinho,<br>
+                Fico logo arrepiado,<br>
+                Todo doido e louquinho!
+            </div>
+
+            <div class="estrofe">
+                E quando olho no seu olho,<br>
+                Encontro o meu lugar,<br>
+                Lugar de paz ao seu lado<br>
+                Pra eu poder me abrigar.<br>
+                Sou levado pras estrelas<br>
+                Toda vez que vou olhar.
+            </div>
+
+            <div class="estrofe">
+                Todo dia quando oro,<br>
+                A Deus peço proteção,<br>
+                Saúde e livramento<br>
+                Pra a moça do meu coração.<br>
+                Conto o tempo pra estar<br>
+                Preso no teus braços!
+            </div>
+
+            <div class="estrofe">
+                Logo, logo a gente comemora<br>
+                Essa linda primavera,<br>
+                Comemorando juntinhos<br>
+                Sua vida, minha mulher.<br>
+                Te amo hoje e sempre,<br>
+                Ingridizinha!
+            </div>
+
+            <div class="estrofe">
+                Ah, Mourinha, não passava!<br>
+                Seu bumbum espetacular,<br>
+                Que é gigante e eu amo<br>
+                Com vontade de apertar,<br>
+                Só de sentir eu fico todo<br>
+                Incendiado de amar!
+            </div>
+
+            <div class="estrofe">
+                Tem também o pipiuzão,<br>
+                Que é gigante de doer,<br>
+                Pra minha pitocona<br>
+                Dentro dele eu meter!<br>
+                Só em pensar em você,<br>
+                Fica dura pra valer!
+            </div>
+
+            <div class="estrofe">
+                A cada breve instante,<br>
+                O meu corpo conta a hora,<br>
+                Pra ficarmos sempre juntos<br>
+                Sem ninguém ir embora.<br>
+                Te amo, minha Mourinha,<br>
+                Minha flor, minha mulher!
+            </div>
+
+            <div class="estrofe ingles">
+                Ops, eu já esquecia<br><br>
+                If the world is coming to an end...<br>
+                Or if the party is wrapping up, my love...<br>
+                I just want to hold you tight,<br>
+                And die looking at your beautiful smile bright!!<br><br>
+                I love you, my Greek goddess!!
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para fazer as estrofes aparecerem suavemente ao rolar a página -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const estrofes = document.querySelectorAll('.estrofe');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visivel');
+                    }
+                });
+            }, {
+                threshold: 0.1 /* Dispara quando 10% da estrofe aparece na tela */
+            });
+
+            estrofes.forEach(estrofe => {
+                observer.observe(estrofe);
+            });
+        });
+    </script>
+</body>
+</html>
